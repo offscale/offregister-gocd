@@ -6,8 +6,8 @@ if version[0] == "2":
 else:
     from io import StringIO
 
-from fabric.contrib.files import exists, append
-from fabric.operations import sudo, put
+from fabric.contrib.files import append, exists
+from fabric.operations import put, sudo
 from nginx_parse_emit import emit, utils
 from nginxparser import dumps, loads
 from offregister_certificate.ubuntu import self_signed0
