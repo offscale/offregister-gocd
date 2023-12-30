@@ -16,7 +16,7 @@ from offregister_fab_utils.ubuntu.systemd import restart_systemd
 from offregister_nginx import ubuntu as nginx
 
 
-def install_deps0(*args, **kwargs):
+def install_deps0(c, *args, **kwargs):
     if not cmd_avail(c, "javac"):
         c.sudo("add-apt-repository -y ppa:webupd8team/java")
         c.sudo(
@@ -31,15 +31,15 @@ def install_deps0(*args, **kwargs):
         c.sudo("curl https://download.gocd.org/GOCD-GPG-KEY.asc | sudo apt-key add -")
 
 
-def install_master1(*args, **kwargs):
+def install_master1(c, *args, **kwargs):
     apt_depends(c, "go-server")
 
 
-def install_slave2(*args, **kwargs):
+def install_slave2(c, *args, **kwargs):
     apt_depends(c, "go-agent")
 
 
-def configure_nginx3(*args, **kwargs):
+def configure_nginx3(c, *args, **kwargs):
     nginx.install_nginx0()
     nginx.setup_nginx_init1()
 
